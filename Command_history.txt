@@ -1,5 +1,0 @@
-ls
-cd
-clcm
-nmap
-quit
