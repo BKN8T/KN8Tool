@@ -20,6 +20,13 @@ NC='\033[0m'
 #--------------------------------
 # Update check
 #--------------------------------
+install_sqlmap() {
+    echo "SQLMap yükleniyor..."
+    git clone https://github.com/sqlmapproject/sqlmap.git "$HOME/sqlmap"
+    echo -e "${GREEN}SQLMap başarıyla yüklendi: $HOME/sqlmap${NC}"
+}
+
+
 install_msf() {
     echo "Metasploit yükleniyor..."
     if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -168,7 +175,7 @@ while true; do
     echo "$girdi" >> "$HISTORY_FILE"
     case $girdi in 
         help) 
-            echo -e "${GREEN}${BOLD}Komut Listesi   :${NC}"
+            echo -e "${GREEN}${BOLD}Komut Listesi:${NC}"
             echo -e "${WHITE}${BOLD}help           : Bu yardım menüsünü gösterir.${NC}"
             echo -e "${WHITE}${BOLD}version        : Botun sürümünü gösterir.${NC}"
             echo -e "${WHITE}${BOLD}update         : Yeni sürüm kontrolü yapar.${NC}"
@@ -177,8 +184,11 @@ while true; do
             echo -e "${WHITE}${BOLD}quit           : Botu kapatır.${NC}"
             echo -e "${WHITE}${BOLD}clear          : Terminal ekranını temizler.${NC}"
             echo -e "${WHITE}${BOLD}nmap           : Nmap aracını kullanmak için gerekli bilgileri girin.${NC}"
-            echo -e "${WHITE}${BOLD}nmap_help      : Nmap hakkında daha fazla bilgi${NC}"
-            echo -e "${WHITE}${BOLD}msf            : Msf Console yükler.${NC}";;
+            echo -e "${WHITE}${BOLD}nmap_help      : Nmap hakkında daha fazla bilgi verir.${NC}"
+            echo -e "${WHITE}${BOLD}msf            : Metasploit Console'u yükler ve başlatır.${NC}"
+            echo -e "${WHITE}${BOLD}john           : John the Ripper ile şifre kırma işlemi yapar.${NC}"
+            echo -e "${WHITE}${BOLD}sqlmap         : SQLMap ile SQL enjeksiyon testleri yapar.${NC}";;
+
         version)
             echo -e "${BLUE}$VERSION ${NC}: Versiyonundasınız";;
         update)
@@ -322,6 +332,23 @@ while true; do
             # msfconsole'u arka planda başlat
             msfconsole   # Arka planda çalıştır
             continue;;  # Ana döngüye devam et
+
+
+        
+        sqlmap)
+            if [ ! -d "$HOME/sqlmap" ]; then
+                echo -e "${RED}SQLMap yüklü değil! Yüklemek ister misiniz? (e/h)${NC}"
+                read -n 1 cevap
+                echo
+                if [[ $cevap == "e" || $cevap == "E" ]]; then
+                    install_sqlmap
+                fi
+            else
+                echo -e "${GREEN}SQLMap zaten yüklü: $HOME/sqlmap${NC}"
+            fi
+            ;;
+
+
         * ) 
             echo -e "${RED}Yanlış Komut Girişi!! ${WHITE}--help${RED} İle Komutlara Ulaşabilirsiniz${NC}";;
     esac
