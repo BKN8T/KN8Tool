@@ -1,6 +1,4 @@
-İşte KN8Tool için güncellenmiş ve daha akıcı bir şekilde yazılmış belge:
 
----
 
 ## KN8Tool - Yeni Başlayanlar İçin Siber Güvenlik Aracı
 **Sürüm:** 0.0.0.2
