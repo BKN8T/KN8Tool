@@ -143,6 +143,20 @@ install_nmap() {
     fi
 }
 
+install_set() {
+    echo "Social Engineering Toolkit (SET) yükleniyor..."
+    # SET'in yüklenmesi için git ile klonlama işlemi yapılır
+    if [ ! -d "$HOME/setoolkit" ]; then
+        git clone https://github.com/trustedsec/social-engineer-toolkit.git "$HOME/setoolkit"
+        cd "$HOME/setoolkit" || return
+        sudo python3 setup.py install
+        echo -e "${GREEN}SET başarıyla yüklendi: $HOME/setoolkit${NC}"
+    else
+        echo -e "${GREEN}SET zaten yüklü: $HOME/setoolkit${NC}"
+    fi
+}
+
+
 install_john() {
     if [[ "$OSTYPE" == "darwin"* ]]; then
         echo "John the Ripper yükleniyor..."
@@ -175,19 +189,18 @@ while true; do
     echo "$girdi" >> "$HISTORY_FILE"
     case $girdi in 
         help) 
-            echo -e "${GREEN}${BOLD}Komut Listesi:${NC}"
-            echo -e "${WHITE}${BOLD}help           : Bu yardım menüsünü gösterir.${NC}"
-            echo -e "${WHITE}${BOLD}version        : Botun sürümünü gösterir.${NC}"
-            echo -e "${WHITE}${BOLD}update         : Yeni sürüm kontrolü yapar.${NC}"
-            echo -e "${WHITE}${BOLD}gecmis         : Komut geçmişini gösterir.${NC}"
-            echo -e "${WHITE}${BOLD}gecmis_temizle : Komut geçmişini temizler.${NC}"
-            echo -e "${WHITE}${BOLD}quit           : Botu kapatır.${NC}"
-            echo -e "${WHITE}${BOLD}clear          : Terminal ekranını temizler.${NC}"
-            echo -e "${WHITE}${BOLD}nmap           : Nmap aracını kullanmak için gerekli bilgileri girin.${NC}"
-            echo -e "${WHITE}${BOLD}nmap_help      : Nmap hakkında daha fazla bilgi verir.${NC}"
-            echo -e "${WHITE}${BOLD}msf            : Metasploit Console'u yükler ve başlatır.${NC}"
-            echo -e "${WHITE}${BOLD}john           : John the Ripper ile şifre kırma işlemi yapar.${NC}"
-            echo -e "${WHITE}${BOLD}sqlmap         : SQLMap ile SQL enjeksiyon testleri yapar.${NC}";;
+            echo -e "${CYAN}${BOLD}Komutlar:${NC}"
+            echo -e "${WHITE}${BOLD}🆘 help            : Bu yardım menüsünü gösterir.${NC}"
+            echo -e "${WHITE}${BOLD}🔢 version         : Botun sürümünü gösterir.${NC}"
+            echo -e "${WHITE}${BOLD}🔄 update          : Güncelleme kontrolü yapar.${NC}"
+            echo -e "${WHITE}${BOLD}❌ quit            : Botu kapatır.${NC}"
+            echo -e "${WHITE}${BOLD}🧹 clear           : Terminal ekranını temizler.${NC}"
+            echo -e "${WHITE}${BOLD}🌐 nmap            : Nmap aracı kullanımı için.${NC}"
+            echo -e "${WHITE}${BOLD}🎯 msf             : Metasploit kullanımı için.${NC}"
+            echo -e "${WHITE}${BOLD}💻 sqlmap          : SQLMap aracı kullanımı için.${NC}"
+            echo -e "${WHITE}${BOLD}🔧 set             : Social Engineering Toolkit kurulumu ve kullanımı.${NC}"
+            echo -e "${WHITE}${BOLD}📜 gecmis          : Komut geçmişini gösterir.${NC}"
+            echo -e "${WHITE}${BOLD}🗑️ gecmis_temizle  : Komut geçmişini temizler.${NC}"
 
         version)
             echo -e "${BLUE}$VERSION ${NC}: Versiyonundasınız";;
@@ -347,6 +360,20 @@ while true; do
                 echo -e "${GREEN}SQLMap zaten yüklü: $HOME/sqlmap${NC}"
             fi
             ;;
+        set)
+            # SET'in yüklü olup olmadığını kontrol et
+            if [ ! -d "$HOME/setoolkit" ]; then
+                echo -e "${RED}SET yüklü değil! Yüklemek ister misiniz? (e/h)${NC}"
+                read -n 1 cevap
+                echo
+                if [[ $cevap == "e" || $cevap == "E" ]]; then
+                    install_set
+                fi
+            else
+                echo -e "${GREEN}SET zaten yüklü: $HOME/setoolkit${NC}"
+            fi
+            ;;
+
 
 
         * ) 
