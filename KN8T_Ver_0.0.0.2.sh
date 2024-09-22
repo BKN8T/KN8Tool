@@ -23,7 +23,7 @@
     install_sqlmap() {
         echo "SQLMap yükleniyor..."
         git clone https://github.com/sqlmapproject/sqlmap.git "$HOME/sqlmap"
-        echo -e "${GREEN}SQLMap başarıyla yüklendi: $HOME/sqlmap${NC}"
+        echo "${GREEN}SQLMap başarıyla yüklendi: $HOME/sqlmap${NC}"
     }
 
 
@@ -40,20 +40,20 @@
 
     check_msf_update() {
         if ! command -v msfconsole &> /dev/null; then
-            echo -e "${RED}Metasploit yüklü değil! Yüklemek ister misiniz? (e/h)${NC}"
+            echo  "${RED}Metasploit yüklü değil! Yüklemek ister misiniz? (e/h)${NC}"
             read -n 1 response
             echo # Yeni satıra geç
             if [[ $response == "e" || $response == "E" ]]; then
                 install_msf
             fi
         else
-            echo -e "${GREEN}Metasploit mevcut.${NC}"
-            echo -e "${YELLOW}Güncelleme kontrol ediliyor...${NC}"
+            echo "${GREEN}Metasploit mevcut.${NC}"
+            echo "${YELLOW}Güncelleme kontrol ediliyor...${NC}"
             msf_update_output=$(msfupdate 2>&1)
             if [[ "$msf_update_output" == *"already up to date"* ]]; then
-                echo -e "${GREEN}Metasploit zaten güncel!${NC}"
+                echo -"${GREEN}Metasploit zaten güncel!${NC}"
             else
-                echo -e "${YELLOW}Metasploit güncelleniyor...${NC}"
+                echo  "${YELLOW}Metasploit güncelleniyor...${NC}"
                 echo "$msf_update_output"
             fi
         fi
@@ -69,7 +69,7 @@
                 if command -v nmap &> /dev/null; then
                     current_version=$(nmap --version | head -n 1 | awk '{print $2}')
                 else
-                    echo -e "${RED}Nmap yüklü değil! Yüklemek ister misiniz? (e/h)${NC}"
+                    echo  "${RED}Nmap yüklü değil! Yüklemek ister misiniz? (e/h)${NC}"
                     read -n 1 response
                     echo # Yeni satıra geç
                     if [[ $response == "e" || $response == "E" ]]; then
@@ -90,7 +90,7 @@
                 if command -v john &> /dev/null; then
                     current_version=$(john --version)
                 else
-                    echo -e "${RED}John the Ripper yüklü değil! Yüklemek ister misiniz? (e/h)${NC}"
+                    echo  "${RED}John the Ripper yüklü değil! Yüklemek ister misiniz? (e/h)${NC}"
                     read -n 1 response
                     echo # Yeni satıra geç
                     if [[ $response == "e" || $response == "E" ]]; then
@@ -108,14 +108,14 @@
                 fi
                 ;;
             *)
-                echo -e "${RED}Geçersiz araç adı: $tool_name${NC}"
+                echo  "${RED}Geçersiz araç adı: $tool_name${NC}"
                 return
                 ;;
         esac
 
         if [ "$current_version" != "$latest_version" ]; then
-            echo -e "${YELLOW}$tool_name güncellemeleri mevcut: $latest_version (Mevcut: $current_version)${NC}"
-            echo -e "${YELLOW}Güncellemek ister misiniz? (e/h)${NC}"
+            echo  "${YELLOW}$tool_name güncellemeleri mevcut: $latest_version (Mevcut: $current_version)${NC}"
+            echo  "${YELLOW}Güncellemek ister misiniz? (e/h)${NC}"
             read -n 1 response
             echo # Yeni satıra geç
             if [[ $response == "e" || $response == "E" ]]; then
@@ -124,12 +124,12 @@
                 else
                     sudo apt-get update && sudo apt-get install -y "$tool_name"
                 fi
-                echo -e "${GREEN}$tool_name güncellendi!${NC}"
+                echo  "${GREEN}$tool_name güncellendi!${NC}"
             else
                 echo "Güncelleme iptal edildi."
             fi
         else
-            echo -e "${GREEN}$tool_name zaten güncel!${NC}"
+            echo  "${GREEN}$tool_name zaten güncel!${NC}"
         fi
     }
 
@@ -150,9 +150,9 @@
             git clone https://github.com/trustedsec/social-engineer-toolkit.git "$HOME/setoolkit"
             cd "$HOME/setoolkit" || return
             sudo python3 setup.py install
-            echo -e "${GREEN}SET başarıyla yüklendi: $HOME/setoolkit${NC}"
+            echo  "${GREEN}SET başarıyla yüklendi: $HOME/setoolkit${NC}"
         else
-            echo -e "${GREEN}SET zaten yüklü: $HOME/setoolkit${NC}"
+            echo  "${GREEN}SET zaten yüklü: $HOME/setoolkit${NC}"
         fi
     }
 
@@ -170,7 +170,7 @@
     #--------------------------------
     # İlk mesajlar
     echo "help İle Komutlara Ulaşabilirsiniz"
-    echo -e "${CYAN}
+    echo  "${CYAN}
     ██╗  ██╗███╗   ██╗ █████╗ ████████╗    ████████╗ ██████╗  ██████╗ ██╗     
     ██║ ██╔╝████╗  ██║██╔══██╗╚══██╔══╝    ╚══██╔══╝██╔═══██╗██╔═══██╗██║     
     █████╔╝ ██╔██╗ ██║╚█████╔╝   ██║          ██║   ██║   ██║██║   ██║██║     
@@ -184,30 +184,31 @@
     #--------------------------------
     while true; do
         
-        echo -e "${CYAN}KN8T: ${NC}\c"  
+        echo  "${CYAN}KN8T: ${NC}\c"  
         read girdi
         echo "$girdi" >> "$HISTORY_FILE"
         case $girdi in 
             help) 
-                echo -e "${CYAN}${BOLD}Komutlar:${NC}"
-                echo -e "${WHITE}${BOLD}🆘 help            : Bu yardım menüsünü gösterir.${NC}"
-                echo -e "${WHITE}${BOLD}🔢 version         : Botun sürümünü gösterir.${NC}"
-                echo -e "${WHITE}${BOLD}🔄 update          : Güncelleme kontrolü yapar.${NC}"
-                echo -e "${WHITE}${BOLD}❌ quit            : Botu kapatır.${NC}"
-                echo -e "${WHITE}${BOLD}🧹 clear           : Terminal ekranını temizler.${NC}"
-                echo -e "${WHITE}${BOLD}🌐 nmap            : Nmap aracı kullanımı için.${NC}"
-                echo -e "${WHITE}${BOLD}🎯 msf             : Metasploit kullanımı için.${NC}"
-                echo -e "${WHITE}${BOLD}💻 sqlmap          : SQLMap aracı kullanımı için.${NC}"
-                echo -e "${WHITE}${BOLD}🔧 set             : Social Engineering Toolkit kurulumu ve kullanımı.${NC}"
-                echo -e "${WHITE}${BOLD}📜 gecmis          : Komut geçmişini gösterir.${NC}"
-                echo -e "${WHITE}${BOLD}🗑️ gecmis_temizle  : Komut geçmişini temizler.${NC}"
+                echo "${GREEN}${BOLD}Komutlar:${NC}"
+                echo "${WHITE}${BOLD}🆘 help            : Bu yardım menüsünü gösterir.${NC}"
+                echo "${WHITE}${BOLD}🔢 version         : Botun sürümünü gösterir.${NC}"
+                echo "${WHITE}${BOLD}🔄 update          : Güncelleme kontrolü yapar.${NC}"
+                echo "${WHITE}${BOLD}❌ quit            : Botu kapatır.${NC}"
+                echo "${WHITE}${BOLD}🧹 clear           : Terminal ekranını temizler.${NC}"
+                echo "${WHITE}${BOLD}🌐 nmap            : Nmap aracı kullanımı için.${NC}"
+                echo "${WHITE}${BOLD}🎯 msf             : Metasploit kullanımı için.${NC}"
+                echo "${WHITE}${BOLD}💻 sqlmap          : SQLMap aracı kullanımı için.${NC}"
+                echo "${WHITE}${BOLD}🔧 set             : Social Engineering Toolkit kurulumu ve kullanımı.${NC}"
+                echo "${WHITE}${BOLD}📜 gecmis          : Komut geçmişini gösterir.${NC}"
+                echo "${WHITE}${BOLD}🗑️ gecmis_temizle  : Komut geçmişini temizler.${NC}" ;;
+
 
             version)
-                echo -e "${BLUE}$VERSION ${NC}: Versiyonundasınız";;
+                echo  "${BLUE}$VERSION ${NC}: Versiyonundasınız";;
             update)
                 LATEST_VERSION=$(curl -s https://example.com/latest_version)  # Versiyon kontrolü yapan bir API veya web sitesi ekle
                 if [[ "$LATEST_VERSION" != "$VERSION" ]]; then
-                    echo -e "${YELLOW}Yeni bir sürüm mevcut: $LATEST_VERSION. Güncellemek ister misiniz? (e/h)${NC}"
+                    echo  "${YELLOW}Yeni bir sürüm mevcut: $LATEST_VERSION. Güncellemek ister misiniz? (e/h)${NC}"
                     read -n 1 cevap
                     echo # Yeni satıra geç
                     if [[ $cevap == "e" || $cevap == "E" ]]; then
@@ -218,14 +219,14 @@
                         echo "Güncelleme iptal edildi."
                     fi
                 else
-                    echo -e "${GREEN}Zaten en son sürümü kullanıyorsunuz!${NC}"
+                    echo  "${GREEN}Zaten en son sürümü kullanıyorsunuz!${NC}"
                 fi
         ;;  
             quit) 
                 echo "Çıkılıyor..."; 
                 break;;  # Döngüyü sonlandır
             gecmis)
-                echo -e "${YELLOW}Komut Geçmişi:${NC}"
+                echo "${YELLOW}Komut Geçmişi:${NC}"
                 if [[ -f "$HISTORY_FILE" ]]; then
                     cat "$HISTORY_FILE"
                 else
@@ -233,16 +234,16 @@
                 fi;;
             gecmis_temizle)
                 > "$HISTORY_FILE"  # Dosyayı boşalt
-                echo -e "${GREEN}Komut geçmişi temizlendi.${NC}";;
+                echo  "${GREEN}Komut geçmişi temizlendi.${NC}";;
             clear) 
                 clear  # Ekranı temizle
-                echo -e "${MAGENTA}Ekran temizlendi.";;
+                echo  "${MAGENTA}Ekran temizlendi.";;
 
             nmap)
                 check_update nmap
                 # Nmap'in yüklü olup olmadığını kontrol et
                 if ! command -v nmap &> /dev/null; then
-                    echo -e "${RED}Nmap yüklü değil! Yüklemek ister misiniz? (e/h)${NC}"
+                    echo "${RED}Nmap yüklü değil! Yüklemek ister misiniz? (e/h)${NC}"
                     read -n 1 cevap
                     echo # Yeni satıra geç
                     if [[ $cevap == "e" || $cevap == "E" ]]; then
@@ -253,7 +254,7 @@
                             if command -v brew &> /dev/null; then
                                 brew install nmap
                             else
-                                echo -e "${RED}Homebrew yüklü değil. Önce Homebrew yükleyin.${NC}"
+                                echo  "${RED}Homebrew yüklü değil. Önce Homebrew yükleyin.${NC}"
                             fi
                         else
                             # Diğer sistemler için apt-get kullanımı
@@ -265,44 +266,44 @@
                         continue
                     fi
                 fi
-                echo -e "${YELLOW}Nmap Tarama İçin Hedef IP veya Alan Adını Girin:${NC} \c"
+                echo "${YELLOW}Nmap Tarama İçin Hedef IP veya Alan Adını Girin:${NC} \c"
                 read hedef
-                echo -e "${YELLOW}Ek Nmap Seçeneklerini Girin (örneğin, -Pn, -sV):${NC} \c"
+                echo "${YELLOW}Ek Nmap Seçeneklerini Girin (örneğin, -Pn, -sV):${NC} \c"
                 read ek_secenekler
                 
                 # Nmap komutunu çalıştır
                 nmap $ek_secenekler "$hedef" ;;
             nmap_help) 
-                echo -e "${GREEN}${BOLD}Nmap Komutları :${NC}"
-                echo -e "${WHITE}${BOLD}-sS             : SYN taraması (stealth) yapar.${NC}"
-                echo -e "${WHITE}${BOLD}-sT             : TCP bağlantı taraması (full connect).${NC}"
-                echo -e "${WHITE}${BOLD}-sU             : UDP taraması yapar.${NC}"
-                echo -e "${WHITE}${BOLD}-sV             : Hizmet versiyonu tespiti yapar.${NC}"
-                echo -e "${WHITE}${BOLD}-O              : İşletim sistemi tespiti yapar.${NC}"
-                echo -e "${WHITE}${BOLD}-Pn             : Hostların canlı olup olmadığını atlar.${NC}"
-                echo -e "${WHITE}${BOLD}-p <port>       : Belirtilen port veya port aralığını tarar.${NC}"
-                echo -e "${WHITE}${BOLD}-A              : Detaylı tarama (OS, versiyon, script, traceroute).${NC}"
-                echo -e "${WHITE}${BOLD}-T<0-5>         : Tarama hızı ayarı (0: en yavaş, 5: en hızlı).${NC}"
-                echo -e "${WHITE}${BOLD}-oN <dosya>     : Normal formatta tarama çıktısını belirtilen dosyaya kaydeder.${NC}"
-                echo -e "${WHITE}${BOLD}-oG <dosya>     : Grepable formatta çıktı alır.${NC}"
-                echo -e "${WHITE}${BOLD}-oX <dosya>     : XML formatında çıktı alır.${NC}"
-                echo -e "${WHITE}${BOLD}-F              : Hızlı tarama yapar, yalnızca en yaygın portları tarar.${NC}"
-                echo -e "${WHITE}${BOLD}-sP             : Hedef ağdaki aktif cihazları tarar (ping taraması).${NC}"
-                echo -e "${WHITE}${BOLD}-iL <dosya>     : Belirtilen dosyadaki IP adreslerini veya hedefleri kullanarak tarama yapar.${NC}"
-                echo -e "${WHITE}${BOLD}-n              : DNS çözümlemesini atlayarak yalnızca IP adreslerini kullanır.${NC}"
-                echo -e "${WHITE}${BOLD}-6              : IPv6 adresleri ile tarama yapar.${NC}"
-                echo -e "${WHITE}${BOLD}-p-             : Tüm 65535 TCP portunu tarar.${NC}"
-                echo -e "${WHITE}${BOLD}-v              : Tarama sırasında daha fazla bilgi verir (verbose).${NC}"
-                echo -e "${WHITE}${BOLD}-R              : DNS çözümlemesi yapar.${NC}"
-                echo -e "${WHITE}${BOLD}-sL             : Hedeflerin listesini gösterir, tarama yapmaz.${NC}"
-                echo -e "${WHITE}${BOLD}-Pn             : Ping taramasını atlayarak doğrudan tarama yapar.${NC}"
-                echo -e "----------------------------------";;
+                echo  "${GREEN}${BOLD}Nmap Komutları :${NC}"
+                echo  "${WHITE}${BOLD}-sS             : SYN taraması (stealth) yapar.${NC}"
+                echo  "${WHITE}${BOLD}-sT             : TCP bağlantı taraması (full connect).${NC}"
+                echo  "${WHITE}${BOLD}-sU             : UDP taraması yapar.${NC}"
+                echo  "${WHITE}${BOLD}-sV             : Hizmet versiyonu tespiti yapar.${NC}"
+                echo  "${WHITE}${BOLD}-O              : İşletim sistemi tespiti yapar.${NC}"
+                echo  "${WHITE}${BOLD}-Pn             : Hostların canlı olup olmadığını atlar.${NC}"
+                echo  "${WHITE}${BOLD}-p <port>       : Belirtilen port veya port aralığını tarar.${NC}"
+                echo  "${WHITE}${BOLD}-A              : Detaylı tarama (OS, versiyon, script, traceroute).${NC}"
+                echo  "${WHITE}${BOLD}-T<0-5>         : Tarama hızı ayarı (0: en yavaş, 5: en hızlı).${NC}"
+                echo  "${WHITE}${BOLD}-oN <dosya>     : Normal formatta tarama çıktısını belirtilen dosyaya kaydeder.${NC}"
+                echo  "${WHITE}${BOLD}-oG <dosya>     : Grepable formatta çıktı alır.${NC}"
+                echo  "${WHITE}${BOLD}-oX <dosya>     : XML formatında çıktı alır.${NC}"
+                echo  "${WHITE}${BOLD}-F              : Hızlı tarama yapar, yalnızca en yaygın portları tarar.${NC}"
+                echo  "${WHITE}${BOLD}-sP             : Hedef ağdaki aktif cihazları tarar (ping taraması).${NC}"
+                echo  "${WHITE}${BOLD}-iL <dosya>     : Belirtilen dosyadaki IP adreslerini veya hedefleri kullanarak tarama yapar.${NC}"
+                echo  "${WHITE}${BOLD}-n              : DNS çözümlemesini atlayarak yalnızca IP adreslerini kullanır.${NC}"
+                echo  "${WHITE}${BOLD}-6              : IPv6 adresleri ile tarama yapar.${NC}"
+                echo  "${WHITE}${BOLD}-p-             : Tüm 65535 TCP portunu tarar.${NC}"
+                echo  "${WHITE}${BOLD}-v              : Tarama sırasında daha fazla bilgi verir (verbose).${NC}"
+                echo  "${WHITE}${BOLD}-R              : DNS çözümlemesi yapar.${NC}"
+                echo  "${WHITE}${BOLD}-sL             : Hedeflerin listesini gösterir, tarama yapmaz.${NC}"
+                echo  "${WHITE}${BOLD}-Pn             : Ping taramasını atlayarak doğrudan tarama yapar.${NC}"
+                echo  "----------------------------------";;
 
             john) 
                 check_update john
                 # John the Ripper'ın yüklü olup olmadığını kontrol et
                 if ! command -v john &> /dev/null; then
-                    echo -e "${RED}John the Ripper yüklü değil! Yüklemek ister misiniz? (e/h)${NC}"
+                    echo  "${RED}John the Ripper yüklü değil! Yüklemek ister misiniz? (e/h)${NC}"
                     read -n 1 cevap
                     echo # Yeni satıra geç
                     if [[ $cevap == "e" || $cevap == "E" ]]; then
@@ -312,7 +313,7 @@
                             if command -v brew &> /dev/null; then
                                 brew install john
                             else
-                                echo -e "${RED}Homebrew yüklü değil. Önce Homebrew yükleyin.${NC}"
+                                echo  "${RED}Homebrew yüklü değil. Önce Homebrew yükleyin.${NC}"
                             fi
                         else
                             echo "John the Ripper yükleniyor..."
@@ -324,16 +325,16 @@
                             wget -O /usr/share/wordlists/rockyou.txt.gz https://github.com/PwnFunction/Passwords/raw/master/rockyou.txt.gz
                             gunzip /usr/share/wordlists/rockyou.txt.gz
                         else
-                            echo -e "${GREEN}RockYou wordlist zaten mevcut.${NC}"
+                            echo "${GREEN}RockYou wordlist zaten mevcut.${NC}"
                         fi
                     else
                         echo "John the Ripper yüklenmedi."
                         continue
                     fi
                 fi
-                echo -e "${YELLOW}John the Ripper ile kullanılacak şifre dosyasını girin:${NC} \c"
+                echo  "${YELLOW}John the Ripper ile kullanılacak şifre dosyasını girin:${NC} \c"
                 read sifre_dosyasi
-                echo -e "${YELLOW}Ek John the Ripper Seçeneklerini Girin:${NC} \c"
+                echo  "${YELLOW}Ek John the Ripper Seçeneklerini Girin:${NC} \c"
                 read ek_john_secenekler
                 
                 # John the Ripper komutunu çalıştır
@@ -341,7 +342,7 @@
 
             msf) 
                 check_msf_update
-                echo -e "${YELLOW}Metasploit'i başlatmak için 'msfconsole' yazın.${NC}"
+                echo  "${YELLOW}Metasploit'i başlatmak için 'msfconsole' yazın.${NC}"
                 # msfconsole'u arka planda başlat
                 msfconsole   # Arka planda çalıştır
                 continue;;  # Ana döngüye devam et
@@ -350,33 +351,33 @@
             
             sqlmap)
                 if [ ! -d "$HOME/sqlmap" ]; then
-                    echo -e "${RED}SQLMap yüklü değil! Yüklemek ister misiniz? (e/h)${NC}"
+                    echo  "${RED}SQLMap yüklü değil! Yüklemek ister misiniz? (e/h)${NC}"
                     read -n 1 cevap
                     echo
                     if [[ $cevap == "e" || $cevap == "E" ]]; then
                         install_sqlmap
                     fi
                 else
-                    echo -e "${GREEN}SQLMap zaten yüklü: $HOME/sqlmap${NC}"
+                    echo  "${GREEN}SQLMap zaten yüklü: $HOME/sqlmap${NC}"
                 fi
                 ;;
             set)
                 # SET'in yüklü olup olmadığını kontrol et
                 if [ ! -d "$HOME/setoolkit" ]; then
-                    echo -e "${RED}SET yüklü değil! Yüklemek ister misiniz? (e/h)${NC}"
+                    echo  "${RED}SET yüklü değil! Yüklemek ister misiniz? (e/h)${NC}"
                     read -n 1 cevap
                     echo
                     if [[ $cevap == "e" || $cevap == "E" ]]; then
                         install_set
                     fi
                 else
-                    echo -e "${GREEN}SET zaten yüklü: $HOME/setoolkit${NC}"
+                    echo "${GREEN}SET zaten yüklü: $HOME/setoolkit${NC}"
                 fi
                 ;;
 
 
 
             * ) 
-                echo -e "${RED}Yanlış Komut Girişi!! ${WHITE}--help${RED} İle Komutlara Ulaşabilirsiniz${NC}";;
+                echo "${RED}Yanlış Komut Girişi!! ${WHITE}--help${RED} İle Komutlara Ulaşabilirsiniz${NC}";;
         esac
     done
