@@ -20,6 +20,38 @@ NC='\033[0m'
 #--------------------------------
 # Update check
 #--------------------------------
+install_msf() {
+    echo "Metasploit yükleniyor..."
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        brew install metasploit
+        brew services start postgresql
+
+    else
+        curl https://raw.githubusercontent.com/rapid7/metasploit-framework/master/scripts/installer.sh | bash
+    fi
+}
+
+check_msf_update() {
+    if ! command -v msfconsole &> /dev/null; then
+        echo -e "${RED}Metasploit yüklü değil! Yüklemek ister misiniz? (e/h)${NC}"
+        read -n 1 response
+        echo # Yeni satıra geç
+        if [[ $response == "e" || $response == "E" ]]; then
+            install_msf
+        fi
+    else
+        echo -e "${GREEN}Metasploit mevcut.${NC}"
+        echo -e "${YELLOW}Güncelleme kontrol ediliyor...${NC}"
+        msf_update_output=$(msfupdate 2>&1)
+        if [[ "$msf_update_output" == *"already up to date"* ]]; then
+            echo -e "${GREEN}Metasploit zaten güncel!${NC}"
+        else
+            echo -e "${YELLOW}Metasploit güncelleniyor...${NC}"
+            echo "$msf_update_output"
+        fi
+    fi
+}
+
 check_update() {
     local tool_name=$1
     local current_version
@@ -145,7 +177,8 @@ while true; do
             echo -e "${WHITE}${BOLD}quit           : Botu kapatır.${NC}"
             echo -e "${WHITE}${BOLD}clear          : Terminal ekranını temizler.${NC}"
             echo -e "${WHITE}${BOLD}nmap           : Nmap aracını kullanmak için gerekli bilgileri girin.${NC}"
-            echo -e "${WHITE}${BOLD}nmap_help      : Nmap hakkında daha fazla bilgi${NC}";;
+            echo -e "${WHITE}${BOLD}nmap_help      : Nmap hakkında daha fazla bilgi${NC}"
+            echo -e "${WHITE}${BOLD}msf            : Msf Console yükler.${NC}";;
         version)
             echo -e "${BLUE}$VERSION ${NC}: Versiyonundasınız";;
         update)
@@ -283,6 +316,12 @@ while true; do
             # John the Ripper komutunu çalıştır
             john $ek_john_secenekler "$sifre_dosyasi" ;;
 
+         msf) 
+            check_msf_update
+            echo -e "${YELLOW}Metasploit'i başlatmak için 'msfconsole' yazın.${NC}"
+            # msfconsole'u arka planda başlat
+            msfconsole   # Arka planda çalıştır
+            continue;;  # Ana döngüye devam et
         * ) 
             echo -e "${RED}Yanlış Komut Girişi!! ${WHITE}--help${RED} İle Komutlara Ulaşabilirsiniz${NC}";;
     esac
