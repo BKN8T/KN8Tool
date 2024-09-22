@@ -18,7 +18,103 @@ BLACK='\033[0;30m'
 BOLD='\033[1m'
 NC='\033[0m'
 #--------------------------------
+# Update check
+#--------------------------------
+check_update() {
+    local tool_name=$1
+    local current_version
+    local latest_version
 
+    case $tool_name in
+        nmap)
+            if command -v nmap &> /dev/null; then
+                current_version=$(nmap --version | head -n 1 | awk '{print $2}')
+            else
+                echo -e "${RED}Nmap yüklü değil! Yüklemek ister misiniz? (e/h)${NC}"
+                read -n 1 response
+                echo # Yeni satıra geç
+                if [[ $response == "e" || $response == "E" ]]; then
+                    install_nmap
+                fi
+                return
+            fi
+
+            if [[ "$OSTYPE" == "darwin"* ]]; then
+                latest_version=$(curl -s https://formulae.brew.sh/api/formula/nmap.json | jq -r '.versions.stable')
+                package_manager="brew"
+            else
+                latest_version=$(apt-cache show nmap | grep -m 1 Version | awk '{print $2}')
+                package_manager="apt-get"
+            fi
+            ;;
+        john)
+            if command -v john &> /dev/null; then
+                current_version=$(john --version)
+            else
+                echo -e "${RED}John the Ripper yüklü değil! Yüklemek ister misiniz? (e/h)${NC}"
+                read -n 1 response
+                echo # Yeni satıra geç
+                if [[ $response == "e" || $response == "E" ]]; then
+                    install_john
+                fi
+                return
+            fi
+
+            if [[ "$OSTYPE" == "darwin"* ]]; then
+                latest_version=$(curl -s https://formulae.brew.sh/api/formula/john.json | jq -r '.versions.stable')
+                package_manager="brew"
+            else
+                latest_version=$(apt-cache show john | grep -m 1 Version | awk '{print $2}')
+                package_manager="apt-get"
+            fi
+            ;;
+        *)
+            echo -e "${RED}Geçersiz araç adı: $tool_name${NC}"
+            return
+            ;;
+    esac
+
+    if [ "$current_version" != "$latest_version" ]; then
+        echo -e "${YELLOW}$tool_name güncellemeleri mevcut: $latest_version (Mevcut: $current_version)${NC}"
+        echo -e "${YELLOW}Güncellemek ister misiniz? (e/h)${NC}"
+        read -n 1 response
+        echo # Yeni satıra geç
+        if [[ $response == "e" || $response == "E" ]]; then
+            if [[ "$package_manager" == "brew" ]]; then
+                brew upgrade "$tool_name"
+            else
+                sudo apt-get update && sudo apt-get install -y "$tool_name"
+            fi
+            echo -e "${GREEN}$tool_name güncellendi!${NC}"
+        else
+            echo "Güncelleme iptal edildi."
+        fi
+    else
+        echo -e "${GREEN}$tool_name zaten güncel!${NC}"
+    fi
+}
+
+install_nmap() {
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        echo "Nmap yükleniyor..."
+        brew install nmap
+    else
+        echo "Nmap yükleniyor..."
+        sudo apt-get update && sudo apt-get install -y nmap
+    fi
+}
+
+install_john() {
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        echo "John the Ripper yükleniyor..."
+        brew install john
+    else
+        echo "John the Ripper yükleniyor..."
+        sudo apt-get update && sudo apt-get install -y john
+    fi
+}
+
+#--------------------------------
 # İlk mesajlar
 echo "help İle Komutlara Ulaşabilirsiniz"
 echo -e "${CYAN}
@@ -87,6 +183,7 @@ while true; do
             echo -e "${MAGENTA}Ekran temizlendi.";;
 
         nmap)
+            check_update nmap
             # Nmap'in yüklü olup olmadığını kontrol et
             if ! command -v nmap &> /dev/null; then
                 echo -e "${RED}Nmap yüklü değil! Yüklemek ister misiniz? (e/h)${NC}"
@@ -146,6 +243,7 @@ while true; do
             echo -e "----------------------------------";;
 
         john) 
+            check_update john
             # John the Ripper'ın yüklü olup olmadığını kontrol et
             if ! command -v john &> /dev/null; then
                 echo -e "${RED}John the Ripper yüklü değil! Yüklemek ister misiniz? (e/h)${NC}"
