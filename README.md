@@ -1,5 +1,5 @@
 KN8Tool - Yeni Başlayanlar İçin Siber Güvenlik Aracı
-Sürüm: 0.0.0.1
+Sürüm: 0.0.0.2
 
 Genel Bakış:
 
