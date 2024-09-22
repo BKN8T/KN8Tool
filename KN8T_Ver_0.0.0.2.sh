@@ -1,4 +1,4 @@
-    #!/bin/bash 
+    #! /bin/bash 
 
     #--------------------------------
     VERSION="0.0.0.2"
@@ -169,22 +169,25 @@
 
     #--------------------------------
     # İlk mesajlar
-    echo "help İle Komutlara Ulaşabilirsiniz"
-    echo  "${CYAN}
+
+    echo  "${BLUE}
     ██╗  ██╗███╗   ██╗ █████╗ ████████╗    ████████╗ ██████╗  ██████╗ ██╗     
     ██║ ██╔╝████╗  ██║██╔══██╗╚══██╔══╝    ╚══██╔══╝██╔═══██╗██╔═══██╗██║     
     █████╔╝ ██╔██╗ ██║╚█████╔╝   ██║          ██║   ██║   ██║██║   ██║██║     
     ██╔═██╗ ██║╚██╗██║██╔══██╗   ██║          ██║   ██║   ██║██║   ██║██║     
     ██║  ██╗██║ ╚████║╚█████╔╝   ██║          ██║   ╚██████╔╝╚██████╔╝███████╗
     ╚═╝  ╚═╝╚═╝  ╚═══╝ ╚════╝    ╚═╝          ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝${NC}
-                                                                            
+   ${BLUE} --------------------------------------------------------------------------${NC}
+    ${YELLOW}Instagram${NC} --> ${BLUE}fberkbudag${NC}       ${YELLOW}Discord${NC} --> ${BLUE}https://discord.gg/kn8t${NC}
+    ${YELLOW}Github${NC}    --> ${BLUE}BKN8T ${NC}           ${RED}Komutlara ulaşmak için ${WHITE}help${NC}              
+   ${BLUE} --------------------------------------------------------------------------${NC}
     "
     #--------------------------------
     # Ana döngü
     #--------------------------------
     while true; do
         
-        echo  "${CYAN}KN8T: ${NC}\c"  
+        echo  "${BLUE}KN8T: ${NC}\c"  
         read girdi
         echo "$girdi" >> "$HISTORY_FILE"
         case $girdi in 
@@ -378,6 +381,6 @@
 
 
             * ) 
-                echo "${RED}Yanlış Komut Girişi!! ${WHITE}--help${RED} İle Komutlara Ulaşabilirsiniz${NC}";;
+                echo "${RED}Yanlış Komut Girişi!! ${WHITE}help${RED} İle Komutlara Ulaşabilirsiniz${NC}";;
         esac
     done
