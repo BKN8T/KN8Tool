@@ -100,7 +100,3 @@ KN8Tool is an easy-to-use Bash-based cybersecurity tool designed for beginners. 
 - **John the Ripper:** Used for password cracking; KN8Tool prompts for installation and downloads the RockYou wordlist if needed.
 
 ---
-
-```
-
-Feel free to copy and use this enhanced `README.md`! If you need further modifications or additional features, just let me know!
