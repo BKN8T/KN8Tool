@@ -209,22 +209,23 @@
             version)
                 echo  "${BLUE}$VERSION ${NC}: Versiyonundasınız";;
             update)
-                LATEST_VERSION=$(curl -s https://example.com/latest_version)  # Versiyon kontrolü yapan bir API veya web sitesi ekle
+                VERSION="0.0.0.2"  # Mevcut sürüm
+                LATEST_VERSION=$(curl -s https://github.com/BKN8T/KN8Tool/blob/master/KN8T_Ver_0.0.0.2.sh)  # Versiyon kontrolü yapan GitHub URL'si
                 if [[ "$LATEST_VERSION" != "$VERSION" ]]; then
                     echo  "${YELLOW}Yeni bir sürüm mevcut: $LATEST_VERSION. Güncellemek ister misiniz? (e/h)${NC}"
                     read -n 1 cevap
                     echo # Yeni satıra geç
                     if [[ $cevap == "e" || $cevap == "E" ]]; then
                         echo "Güncelleniyor..."
-                        # Güncelleme işlemi için komut ekle, örneğin Git üzerinden çekme işlemi
-                        git pull origin main
+                        git pull origin main  # Güncelleme işlemi
                     else
                         echo "Güncelleme iptal edildi."
                     fi
                 else
                     echo  "${GREEN}Zaten en son sürümü kullanıyorsunuz!${NC}"
                 fi
-        ;;  
+            ;;
+
             quit) 
                 echo "Çıkılıyor..."; 
                 break;;  # Döngüyü sonlandır
