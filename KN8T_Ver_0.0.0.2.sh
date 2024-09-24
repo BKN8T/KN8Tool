@@ -210,7 +210,7 @@
                 echo  "${BLUE}$VERSION ${NC}: Versiyonundasınız";;
             update)
                 VERSION="0.0.0.2"  # Mevcut sürüm
-                LATEST_VERSION=$(curl -s https://github.com/BKN8T/KN8Tool/blob/master/KN8T_Ver_0.0.0.2.sh)  # Versiyon kontrolü yapan GitHub URL'si
+                LATEST_VERSION=$(curl -s https://raw.githubusercontent.com/BKN8T/KN8Tool/master/version.txt)  # Versiyon kontrolü yapan GitHub URL'si
                 if [[ "$LATEST_VERSION" != "$VERSION" ]]; then
                     echo  "${YELLOW}Yeni bir sürüm mevcut: $LATEST_VERSION. Güncellemek ister misiniz? (e/h)${NC}"
                     read -n 1 cevap
