@@ -242,7 +242,7 @@
         read girdi
         echo "$girdi" >> "$HISTORY_FILE"
         case $girdi in 
-            help) 
+            help|--h|-h|yardim|yardım) 
                 echo "${GREEN}${BOLD}Komutlar:${NC}"
                 echo "${WHITE}${BOLD}🆘 help            : Bu yardım menüsünü gösterir.${NC}"
                 echo "${WHITE}${BOLD}🔢 version         : Botun sürümünü gösterir.${NC}"
@@ -278,7 +278,7 @@
                 fi
             ;;
 
-            quit) 
+            quit|q|exit) 
                 echo "Çıkılıyor..."; 
                 break;;  # Döngüyü sonlandır
             gecmis)
@@ -291,7 +291,7 @@
             gecmis_temizle)
                 > "$HISTORY_FILE"  # Dosyayı boşalt
                 echo  "${GREEN}Komut geçmişi temizlendi.${NC}";;
-            clear) 
+            clear|temizle) 
                 clear  # Ekranı temizle
                 echo  "${MAGENTA}Ekran temizlendi.";;
 
