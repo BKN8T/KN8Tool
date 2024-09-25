@@ -199,6 +199,7 @@
                 echo "${WHITE}${BOLD}❌ quit            : Botu kapatır.${NC}"
                 echo "${WHITE}${BOLD}🧹 clear           : Terminal ekranını temizler.${NC}"
                 echo "${WHITE}${BOLD}🌐 nmap            : Nmap aracı kullanımı için.${NC}"
+                echo "${WHITE}${BOLD}🆘 nmap_help       : Yaygın Nmap komutları için detaylı yardım gösterir.${NC}"
                 echo "${WHITE}${BOLD}🎯 msf             : Metasploit kullanımı için.${NC}"
                 echo "${WHITE}${BOLD}💻 sqlmap          : SQLMap aracı kullanımı için.${NC}"
                 echo "${WHITE}${BOLD}🔧 set             : Social Engineering Toolkit kurulumu ve kullanımı.${NC}"
