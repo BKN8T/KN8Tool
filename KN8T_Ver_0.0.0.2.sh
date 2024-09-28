@@ -230,7 +230,8 @@
     ╚═╝  ╚═╝╚═╝  ╚═══╝ ╚════╝    ╚═╝          ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝${NC}
    ${BLUE} --------------------------------------------------------------------------${NC}
     ${YELLOW}Instagram${NC} --> ${BLUE}fberkbudag${NC}       ${YELLOW}Discord${NC} --> ${BLUE}https://discord.gg/kn8t${NC}
-    ${YELLOW}Github${NC}    --> ${BLUE}BKN8T ${NC}           ${RED}Komutlara ulaşmak için ${WHITE}help${NC}              
+    ${YELLOW}Github${NC}    --> ${BLUE}BKN8T ${NC}           ${RED}Komutlara ulaşmak için ${WHITE}help${NC}      
+    ${WHITE}Version${NC}   --> ${RED}$VERSION${NC}       
    ${BLUE} --------------------------------------------------------------------------${NC}
     "
     #--------------------------------
