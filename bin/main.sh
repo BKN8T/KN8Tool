@@ -48,8 +48,8 @@ HISTORY_FILE="history/command.txt"
     ╚═╝  ╚═╝╚═╝  ╚═══╝ ╚════╝    ╚═╝          ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝${NC}
    ${BLUE} --------------------------------------------------------------------------${NC}
     ${YELLOW}Instagram${NC} --> ${BLUE}fberkbudag${NC}       ${YELLOW}Discord${NC} --> ${BLUE}https://discord.gg/kn8t${NC}
-    ${YELLOW}Github${NC}    --> ${BLUE}BKN8T ${NC}           ${RED}Komutlara ulaşmak için ${WHITE}help${NC}      
-    ${WHITE}Version${NC}   --> ${RED}$VERSION${NC}       
+    ${YELLOW}Github${NC}    --> ${BLUE}BKN8T ${NC}              
+    ${WHITE}Version${NC}   --> ${RED}$VERSION${NC}           ${RED}Komutlara ulaşmak için ${WHITE}help${NC}     
    ${BLUE} --------------------------------------------------------------------------${NC}"
     #--------------------------------
     # Ana döngü
