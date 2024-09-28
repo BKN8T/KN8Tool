@@ -3,7 +3,8 @@
 **Sürüm:** 0.0.0.3
 
 ## Genel Bakış 🌟
-KN8Tool, yeni başlayanlar için tasarlanmış, kullanımı kolay bir Bash tabanlı siber güvenlik aracıdır. Nmap ile ağ taramaları ve John the Ripper ile şifre kırma işlemlerini içeren temel komutları sunar. Araç, renk kodlu çıktı ve gerekli bağımlılıkların otomatik kontrolü gibi özelliklerle deneyimsiz kullanıcılar için erişilebilir hale getirilmiştir.
+KN8Tool, yeni başlayanlar için tasarlanmış, kullanımı kolay bir Bash tabanlı siber güvenlik aracıdır. Nmap ile ağ taramaları ve John the Ripper ile şifre kırma işlemlerini içeren temel komutları sunar. Araç, renk kodlu çıktı ve gerekli bağımlılıkların otomatik kontrolü gibi özelliklerle deneyimsiz kullanıcılar için erişilebilir hale getirilmiştir.KN8Tool, macOS cihazlarında da sorunsuz çalışacak şekilde tasarlanmıştır. macOS işletim sistemi, sunduğu güçlü Unix tabanlı altyapı sayesinde siber güvenlik araçları ve komut satırı uygulamaları için ideal bir platform sunar. Bu araç, macOS kullanıcılarının Nmap, John the Ripper, SQLmap ve Metasploit Framework gibi popüler siber güvenlik uygulamalarını kolayca kullanmalarını sağlar. KN8Tool’un, macOS’un güvenlik ve performans özelliklerini en iyi şekilde değerlendirdiğini ve her seviyeden kullanıcıya uygun olduğunu belirtmek önemlidir.
+
 
 ## Özellikler ✨
 - **🆘 Yardım Menüsü:** Kullanılabilir komutların listesi ve açıklamaları.
@@ -60,7 +61,7 @@ KN8Tool, yeni başlayanlar için tasarlanmış, kullanımı kolay bir Bash taban
 **Version:** 0.0.0.3
 
 ### Overview 🌟
-KN8Tool is an easy-to-use Bash-based cybersecurity tool designed for beginners. It includes basic commands for network scanning with Nmap and password cracking with John the Ripper, along with other useful utilities. The tool features interactive, color-coded outputs and automatic checks for necessary dependencies, making it accessible even to those with minimal experience.
+KN8Tool is an easy-to-use Bash-based cybersecurity tool designed for beginners. It includes basic commands for network scanning with Nmap and password cracking with John the Ripper, along with other useful utilities. The tool features interactive, color-coded outputs and automatic checks for necessary dependencies, making it accessible even to those with minimal experience. KN8Tool is designed to work seamlessly on macOS devices as well. The macOS operating system, with its powerful Unix-based infrastructure, provides an ideal platform for cybersecurity tools and command-line applications. This tool enables macOS users to easily access popular security applications such as Nmap, John the Ripper, SQLmap, and the Metasploit Framework. It’s important to highlight that KN8Tool optimally leverages macOS’s security and performance features, making it suitable for users of all levels.
 
 ### Features ✨
 - **🆘 Help Menu:** Displays a list of available commands and their descriptions.
