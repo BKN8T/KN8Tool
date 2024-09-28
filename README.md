@@ -14,6 +14,8 @@ KN8Tool, yeni başlayanlar için tasarlanmış, kullanımı kolay bir Bash taban
   - `quit`: Araçtan çıkış yapar.
 - **🌐 Nmap Entegrasyonu:** Nmap’ın yüklü olup olmadığını kontrol eder, yoksa yükleme için uyarı verir; özelleştirilebilir ağ taramaları yapma imkanı sunar.
 - **🔑 John the Ripper Entegrasyonu:** John the Ripper’ın yüklü olup olmadığını kontrol eder, yoksa yükleme için uyarı verir; RockYou şifre listesini otomatik indirir.
+- **🧩 SQLmap Entegrasyonu:** SQLmap’in yüklü olup olmadığını kontrol eder. Yüklü değilse, kullanıcıya kurması için uyarı verir ve SQL enjeksiyon testlerini gerçekleştirmek üzere gerekli adımları atar.
+- **🛠️ Metasploit Framework (msf) Entegrasyonu:** Metasploit Framework’ün yüklü olup olmadığını kontrol eder. Yüklü değilse, kullanıcıya yükleme uyarısı verir ve siber güvenlik testlerinde güvenlik açıklarını bulmak için kullanılır.
 
 ## Kurulum 🚀
 1. **Depoyu Klonlayın:**
@@ -69,6 +71,8 @@ KN8Tool is an easy-to-use Bash-based cybersecurity tool designed for beginners. 
   - `quit`: Exits the tool.
 - **🌐 Nmap Integration:** Checks if Nmap is installed and prompts the user to install it if missing; allows for customizable network scans.
 - **🔑 John the Ripper Integration:** Checks if John the Ripper is installed and prompts for installation if not; automatically downloads the RockYou wordlist.
+- **🧩 SQLmap Integration:** Checks if SQLmap is installed. If not, it warns the user to install it and prepares the system for SQL injection testing.
+- **🛠️ Metasploit Framework (msf) Integration:** Verifies whether Metasploit Framework is installed. If not, it alerts the user and is used for detecting and exploiting security vulnerabilities in penetration tests.
 
 ### Installation 🚀
 1. **Clone the Repository:**
