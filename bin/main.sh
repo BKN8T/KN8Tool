@@ -18,21 +18,18 @@ SCRIPT_PATH="$(pwd)/$(basename "$0")"
 
 
 #--------------------------------
-VERSION="0.0.0.2"
+VERSION_FILE="../version.txt"
 
-# History dizin ve dosya oluşturma kontrolü
-HISTORY_DIR="history"
-HISTORY_FILE="../history/command.txt"
-
-# Dizin yoksa oluştur
-if [ ! -d "$HISTORY_DIR" ]; then
-  mkdir -p "$HISTORY_DIR"
+# Dosyanın var olup olmadığını kontrol et
+if [ -f "$VERSION_FILE" ]; then
+    # Dosyadan sürüm bilgisini oku
+    VERSION=$(cat "$VERSION_FILE")
+else
+    echo "Hata: $VERSION_FILE dosyası bulunamadı."
 fi
 
-# Dosya yoksa oluştur
-if [ ! -f "$HISTORY_FILE" ]; then
-  touch "$HISTORY_FILE"
-fi
+
+
 
 
 HISTORY_FILE="history/command.txt" 
