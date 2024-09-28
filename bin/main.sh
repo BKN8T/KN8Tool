@@ -73,6 +73,7 @@ HISTORY_FILE="history/command.txt"
                 echo -e "${WHITE}${BOLD}🆘 nmap_help       : Yaygın Nmap komutları için detaylı yardım gösterir.${NC}"
                 echo -e "${WHITE}${BOLD}🎯 msf             : Metasploit kullanımı için.${NC}"
                 echo -e "${WHITE}${BOLD}💻 sqlmap          : SQLMap aracı kullanımı için.${NC}"
+                echo -e "${WHITE}${BOLD}🐍 hydra           : Hydra aracı yüklemek için.${NC}"
                 echo -e "${WHITE}${BOLD}🔧 set             : Social Engineering Toolkit kurulumu ve kullanımı.${NC}"
                 echo -e "${WHITE}${BOLD}📜 gecmis          : Komut geçmişini gösterir.${NC}"
                 echo -e "${WHITE}${BOLD}🗑️ gecmis_temizle  : Komut geçmişini temizler.${NC}" ;;
@@ -237,6 +238,18 @@ HISTORY_FILE="history/command.txt"
                     echo -e  "${GREEN}SQLMap zaten yüklü: $HOME/sqlmap${NC}"
                 fi
                 ;;
+            hydra)
+          if [ ! -d "$HOME/hydra" ]; then
+                    echo -e  "${RED}Hydra yüklü değil! Yüklemek ister misiniz? (e/h)${NC}"
+                    read -n 1 cevap
+                    echo -e
+                    if [[ $cevap == "e" || $cevap == "E" ]]; then
+                        install_hydra
+                    fi
+                else
+                    echo -e  "${GREEN}Hydra zaten yüklü: $HOME/hydra${NC}"
+                fi
+            ;;
             set)
                 # SET'in yüklü olup olmadığını kontrol et
                 if [ ! -d "$HOME/setoolkit" ]; then

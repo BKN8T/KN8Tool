@@ -6,6 +6,12 @@
         echo -e "${GREEN}SQLMap başarıyla yüklendi: $HOME/sqlmap${NC}"
     }
 
+     install_hydra() {
+        echo "Hydra yükleniyor..."
+        git clone https://github.com/vanhauser-thc/thc-hydra "$HOME/hydra"
+        echo -e "${GREEN}Hydra başarıyla yüklendi: $HOME/hydra${NC}"
+    }
+
 
     install_msf() {
         echo "Metasploit yükleniyor..."
