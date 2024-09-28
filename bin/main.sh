@@ -6,6 +6,7 @@
 source ../config/colors.sh
 source ./create_shortcuts.sh
 source ./install_update.sh
+source ./hydra.sh
 
 #? İşletim sistemini tespit et
 OS=$(uname)
@@ -239,16 +240,9 @@ HISTORY_FILE="history/command.txt"
                 fi
                 ;;
             hydra)
-          if [ ! -d "$HOME/hydra" ]; then
-                    echo -e  "${RED}Hydra yüklü değil! Yüklemek ister misiniz? (e/h)${NC}"
-                    read -n 1 cevap
-                    echo -e
-                    if [[ $cevap == "e" || $cevap == "E" ]]; then
-                        install_hydra
-                    fi
-                else
-                    echo -e  "${GREEN}Hydra zaten yüklü: $HOME/hydra${NC}"
-                fi
+            run_hydra
+            hydra_attack
+                
             ;;
             set)
                 # SET'in yüklü olup olmadığını kontrol et
