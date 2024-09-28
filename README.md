@@ -27,7 +27,7 @@ KN8Tool, yeni başlayanlar için tasarlanmış, kullanımı kolay bir Bash taban
 
 2. **Scripti Çalıştırılabilir Yapın:**
    ```bash
-   chmod +x KN8T_Ver_0.0.0.2.sh
+   sudo chmod +x KN8T_Ver_0.0.0.2.sh
    ```
 
 3. **Scripti Çalıştırın:**
@@ -84,7 +84,7 @@ KN8Tool is an easy-to-use Bash-based cybersecurity tool designed for beginners. 
 
 2. **Make the Script Executable:**
    ```bash
-   chmod +x KN8T_Ver_0.0.0.2.sh
+   sudo chmod +x KN8T_Ver_0.0.0.2.sh
    ```
 
 3. **Run the Script:**
