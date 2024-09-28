@@ -242,7 +242,7 @@
         read girdi
         echo "$girdi" >> "$HISTORY_FILE"
         case $girdi in 
-            help|--h|-h|yardim|yardım) 
+            help|--h|-h) 
                 echo "${GREEN}${BOLD}Komutlar:${NC}"
                 echo "${WHITE}${BOLD}🆘 help            : Bu yardım menüsünü gösterir.${NC}"
                 echo "${WHITE}${BOLD}🔢 version         : Botun sürümünü gösterir.${NC}"
