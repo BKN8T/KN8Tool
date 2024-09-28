@@ -1,6 +1,6 @@
 
 # 🌐 KN8Tool - Yeni Başlayanlar İçin Siber Güvenlik Aracı
-**Sürüm:** 0.0.0.2
+**Sürüm:** 0.0.0.3
 
 ## Genel Bakış 🌟
 KN8Tool, yeni başlayanlar için tasarlanmış, kullanımı kolay bir Bash tabanlı siber güvenlik aracıdır. Nmap ile ağ taramaları ve John the Ripper ile şifre kırma işlemlerini içeren temel komutları sunar. Araç, renk kodlu çıktı ve gerekli bağımlılıkların otomatik kontrolü gibi özelliklerle deneyimsiz kullanıcılar için erişilebilir hale getirilmiştir.
@@ -43,15 +43,19 @@ KN8Tool, yeni başlayanlar için tasarlanmış, kullanımı kolay bir Bash taban
 - `nmap`: Nmap taramaları için hedef ve seçenekleri aldıktan sonra işlemi başlatır.
 - `nmap_help`: Yaygın Nmap komutları için detaylı yardım gösterir.
 - `john`: Şifre kırma işlemi için bir şifre dosyası ve ek seçenekler aldıktan sonra John the Ripper'ı çalıştırır.
+- `sqlmap`: SQLmap çalıştırarak bir web uygulamasındaki SQL enjeksiyon testlerini gerçekleştirir. Kullanıcıya hedef URL ve diğer seçenekler için sorular sorar.
+- `msf`: Metasploit Framework'ü çalıştırarak güvenlik açıklarını bulma ve istismar etme işlemlerini gerçekleştirir. Kullanıcıya hedef ve istismar seçenekleri için sorular sorar.
 
 ## Bağımlılıklar 📦
 - **Nmap:** Ağ taramaları için kullanılır. Yüklenmediği takdirde kullanıcıya yükleme yapması için uyarı verilir.
 - **John the Ripper:** Şifre kırma işlemleri için kullanılır. Yüklenmediği takdirde kullanıcıya yükleme yapması için uyarı verilir ve RockYou wordlist dosyasını indirir.
+- **SQLmap:** SQL enjeksiyon testleri için kullanılır. Yüklenmediği takdirde kullanıcıya yükleme yapması için uyarı verilir.
+- **Metasploit Framework (msf):** Güvenlik açıkları bulma ve istismar etme işlemleri için kullanılır. Yüklenmediği takdirde kullanıcıya yükleme yapması için uyarı verilir.
 
 ---
 
 ## 🌐 KN8Tool - Cybersecurity Tool for Beginners
-**Version:** 0.0.0.2
+**Version:** 0.0.0.3
 
 ### Overview 🌟
 KN8Tool is an easy-to-use Bash-based cybersecurity tool designed for beginners. It includes basic commands for network scanning with Nmap and password cracking with John the Ripper, along with other useful utilities. The tool features interactive, color-coded outputs and automatic checks for necessary dependencies, making it accessible even to those with minimal experience.
@@ -94,9 +98,12 @@ KN8Tool is an easy-to-use Bash-based cybersecurity tool designed for beginners. 
 - `nmap`: Runs Nmap scans after prompting for target and options.
 - `nmap_help`: Displays detailed help for common Nmap commands.
 - `john`: Runs John the Ripper for password cracking after prompting for a password file and options.
+- `sqlmap`: Runs SQLmap to perform SQL injection tests on a web application. Prompts the user for the target URL and additional options.
+- `msf`: Runs the Metasploit Framework to find and exploit security vulnerabilities. Prompts the user for the target and exploit options.
 
 ### Dependencies 📦
 - **Nmap:** Used for network scanning; KN8Tool prompts for installation if not found.
 - **John the Ripper:** Used for password cracking; KN8Tool prompts for installation and downloads the RockYou wordlist if needed.
-
+- **SQLmap:** Used for SQL injection tests. If not installed, the user is prompted to install it.
+- **Metasploit Framework (msf):** Used for finding and exploiting security vulnerabilities. If not installed, the user is prompted to install it.
 ---
