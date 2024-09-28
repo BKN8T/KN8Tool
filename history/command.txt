@@ -1,5 +1,12 @@
-h
+q
+q
+q
+q
+clear
 help
 q
+help
+
 q
+help
 q

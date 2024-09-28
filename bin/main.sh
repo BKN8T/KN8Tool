@@ -6,6 +6,7 @@
 source ../config/colors.sh
 source ./create_shortcuts.sh
 source ./install_update.sh
+
 #? İşletim sistemini tespit et
 OS=$(uname)
 
@@ -40,7 +41,7 @@ HISTORY_FILE="history/command.txt"
 #--------------------------------
     # İlk mesajlar
 
-    echo  "${BLUE}
+    echo -e "${BLUE}
     ██╗  ██╗███╗   ██╗ █████╗ ████████╗    ████████╗ ██████╗  ██████╗ ██╗     
     ██║ ██╔╝████╗  ██║██╔══██╗╚══██╔══╝    ╚══██╔══╝██╔═══██╗██╔═══██╗██║     
     █████╔╝ ██╔██╗ ██║╚█████╔╝   ██║          ██║   ██║   ██║██║   ██║██║     
@@ -51,8 +52,7 @@ HISTORY_FILE="history/command.txt"
     ${YELLOW}Instagram${NC} --> ${BLUE}fberkbudag${NC}       ${YELLOW}Discord${NC} --> ${BLUE}https://discord.gg/kn8t${NC}
     ${YELLOW}Github${NC}    --> ${BLUE}BKN8T ${NC}           ${RED}Komutlara ulaşmak için ${WHITE}help${NC}      
     ${WHITE}Version${NC}   --> ${RED}$VERSION${NC}       
-   ${BLUE} --------------------------------------------------------------------------${NC}
-    "
+   ${BLUE} --------------------------------------------------------------------------${NC}"
     #--------------------------------
     # Ana döngü
     #--------------------------------
