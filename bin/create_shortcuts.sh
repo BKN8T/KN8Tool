@@ -1,6 +1,6 @@
 #? macOS için otomatik kısayol oluşturma
     if [[ "$OS" == "Darwin" ]]; then
-        echo "macOS tespit edildi. Kısayol oluşturuluyor..."
+        echo "          macOS tespit edildi. Kısayol oluşturuluyor..."
 
     # AppleScript komutunu içeren bir geçici dosya oluştur
         APPLESCRIPT="
@@ -15,11 +15,11 @@
         osascript -e 'tell application "Finder" to open folder "KN8Tool" of desktop'
         osacompile -o ~/Desktop/KN8Tool/KN8Tool.app /tmp/temp_script.applescript
 
-        echo "macOS'ta masaüstüne kısayol oluşturuldu!"
+        echo "          macOS'ta masaüstüne kısayol oluşturuldu!"
 
     # Linux için otomatik kısayol oluşturma
     elif [[ "$OS" == "Linux" ]]; then
-        echo "Linux tespit edildi. Kısayol oluşturuluyor..."
+        echo "          Linux tespit edildi. Kısayol oluşturuluyor..."
 
     # Masaüstüne kısayol dosyası oluştur
         DESKTOP_FILE="$HOME/Desktop/KN8Tool.desktop"
@@ -37,7 +37,7 @@
         # Kısayolu çalıştırılabilir yap
         chmod +x "$DESKTOP_FILE"
 
-        echo "Linux'ta masaüstüne kısayol oluşturuldu!"
+        echo "        Linux'ta masaüstüne kısayol oluşturuldu!"
     else
-        echo "Bu işletim sistemi desteklenmiyor."
+        echo "        Bu işletim sistemi desteklenmiyor."
     fi
