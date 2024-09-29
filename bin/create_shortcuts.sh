@@ -10,7 +10,8 @@ if [[ "$OS" == "Darwin" ]]; then
         # AppleScript komutunu içeren bir geçici dosya oluştur
         APPLESCRIPT="
         tell application \"Terminal\"
-            do script \"/bin/bash ${SCRIPT_PATH}\"
+            activate
+            do script \"/bin/bash '${SCRIPT_PATH}'\"
         end tell
         "
         
