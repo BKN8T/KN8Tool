@@ -26,25 +26,25 @@ function run_hydra {
 
 
 function hydra_attack {
-    echo -e "${YELLOW}Saldırı yapılacak hizmeti giriniz (örneğin: ftp, ssh, http-post-form): ${NC} \c"
+    echo -e "${YELLOW}Saldırı yapılacak hizmeti giriniz (örneğin: ftp, ssh, http-post-form): ${NC}\c"
     read hizmet
 
-    echo -e "${YELLOW}Hedefi giriniz (IP adresi veya hedef dosya adı): ${NC} \c"
+    echo -e "${YELLOW}Hedefi giriniz (IP adresi veya hedef dosya adı): ${NC}\c"
     read hedef
 
-    echo -e "${YELLOW}Denemek için bir kullanıcı adı veya dosya adı giriniz: ${NC} \c"
+    echo -e "${YELLOW}Denemek için bir kullanıcı adı veya dosya adı giriniz: ${NC}\c"
     read kullanici_adi
 
-    echo -e "${YELLOW}Denemek için bir şifre veya dosya adı giriniz: ${NC} \c"
+    echo -e "${YELLOW}Denemek için bir şifre veya dosya adı giriniz: ${NC}\c"
     read sifre
 
     echo -e "${YELLOW}Şifre denemelerinde özel seçenekler eklemek istiyor musunuz? (Girişle aynı (s), boş (n), ters giriş (r)) - örn. \"sr\" veya boş bırakınız: ${NC} \c"
     read sifre_secenekleri
 
-    echo -e "${YELLOW}Port numarasını girin (varsayılan için enter tuşuna basın): ${NC} \c"
+    echo -e "${YELLOW}Port numarasını girin (varsayılan için enter tuşuna basın): ${NC}\c"
     read port
 
-    echo -e "${YELLOW}Ek modül seçenekleri varsa buraya girin (yoksa boş bırakın): ${NC} \c"
+    echo -e "${YELLOW}Ek modül seçenekleri varsa buraya girin (yoksa boş bırakın): ${NC}\c"
     read modul_secenekleri
 
     # Hydra komutunu oluşturma

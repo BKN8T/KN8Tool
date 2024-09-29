@@ -6,7 +6,8 @@
 source ../config/colors.sh
 source ./create_shortcuts.sh
 source ./install_update.sh
-source ./hydra.sh
+source ../func/hydra.sh
+source ../func/nmap.sh
 
 #? İşletim sistemini tespit et
 OS=$(uname)
@@ -32,7 +33,17 @@ fi
 
 
 
-HISTORY_FILE="history/command.txt" 
+HISTORY_DIR="history"
+HISTORY_FILE="${HISTORY_DIR}/command.txt"
+
+# Eğer history klasörü yoksa oluştur
+mkdir -p "$HISTORY_DIR"
+
+# Eğer command.txt dosyası yoksa oluştur
+touch "$HISTORY_FILE"
+
+# Dosyaya yazma işlemi
+echo "Komut kaydı" >> "$HISTORY_FILE"
 
 #--------------------------------
 
@@ -115,39 +126,8 @@ HISTORY_FILE="history/command.txt"
                 echo  -e "${MAGENTA}Ekran temizlendi.${NC}";;
 
             nmap)
-                check_update nmap
-                # Nmap'in yüklü olup olmadığını kontrol et
-                if ! command -v nmap &> /dev/null; then
-                    echo -e "${RED}Nmap yüklü değil! Yüklemek ister misiniz? (e/h)${NC}"
-                    read -n 1 cevap
-                    echo # Yeni satıra geç
-                    if [[ $cevap == "e" || $cevap == "E" ]]; then
-                        # OS kontrolü
-                        if [[ "$OSTYPE" == "darwin"* ]]; then
-                            # macOS için Homebrew ile yükleme
-                            echo "Nmap yükleniyor..."
-                            if command -v brew &> /dev/null; then
-                                brew install nmap
-                            else
-                                echo -e "${RED}Homebrew yüklü değil. Önce Homebrew yükleyin.${NC}"
-                            fi
-                        else
-                            # Diğer sistemler için apt-get kullanımı
-                            echo "Nmap yükleniyor..."
-                            sudo apt-get update && sudo apt-get install -y nmap
-                        fi
-                    else
-                        echo "Nmap yüklenmedi."
-                        continue
-                    fi
-                fi
-                echo -e "${YELLOW}Nmap Tarama İçin Hedef IP veya Alan Adını Girin:${NC} \c"
-                read hedef
-                echo -e "${YELLOW}Ek Nmap Seçeneklerini Girin (örneğin, -Pn, -sV):${NC} \c"
-                read ek_secenekler
-                
-                # Nmap komutunu çalıştır
-                nmap $ek_secenekler "$hedef" ;;
+                run_nmap
+                ;;
             nmap_help) 
                 echo -e "${GREEN}${BOLD}Nmap Komutları :${NC}"
                 echo -e "${WHITE}${BOLD}-sS             : SYN taraması (stealth) yapar.${NC}"
