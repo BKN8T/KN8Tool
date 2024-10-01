@@ -48,7 +48,7 @@ KN8Tool, yeni başlayanlar için tasarlanmış, kullanımı kolay bir Bash taban
 - `john`: Şifre kırma işlemi için bir şifre dosyası ve ek seçenekler aldıktan sonra John the Ripper'ı çalıştırır.
 - `sqlmap`: SQLmap çalıştırarak bir web uygulamasındaki SQL enjeksiyon testlerini gerçekleştirir. Kullanıcıya hedef URL ve diğer seçenekler için sorular sorar.
 - `msf`: Metasploit Framework'ü çalıştırarak güvenlik açıklarını bulma ve istismar etme işlemlerini gerçekleştirir. Kullanıcıya hedef ve istismar seçenekleri için sorular sorar.
-- **`hydra`**: Şifre kırma ve kimlik doğrulama saldırıları gerçekleştirir. Kullanıcıya hedef sistem bilgileri, kullanıcı adı ve parola listesi gibi seçenekler için sorular sorar.
+- `hydra`: Hydra'yı kullanarak şifre kırma ve brute-force kimlik doğrulama saldırıları gerçekleştirir. Kullanıcıya hedef sistem bilgileri, kullanıcı adı listesi ve parola listesi seçenekleri için sorular sorar.
 
 
 ## Bağımlılıklar 📦
@@ -77,7 +77,7 @@ KN8Tool is an easy-to-use Bash-based cybersecurity tool designed for beginners. 
 - **🔑 John the Ripper Integration:** Checks if John the Ripper is installed and prompts for installation if not; automatically downloads the RockYou wordlist.
 - **🧩 SQLmap Integration:** Checks if SQLmap is installed. If not, it warns the user to install it and prepares the system for SQL injection testing.
 - **🛠️ Metasploit Framework (msf) Integration:** Verifies whether Metasploit Framework is installed. If not, it alerts the user and is used for detecting and exploiting security vulnerabilities in penetration tests.
-
+- **🔓 Hydra Integration:** Checks if Hydra is installed and prompts the user to install it if missing; allows the user to perform password cracking and authentication brute force attacks, guiding them through options such as target system details, username lists, and password lists.
 ### Installation 🚀
 1. **Clone the Repository:**
    ```bash
@@ -108,7 +108,7 @@ KN8Tool is an easy-to-use Bash-based cybersecurity tool designed for beginners. 
 - `john`: Runs John the Ripper for password cracking after prompting for a password file and options.
 - `sqlmap`: Runs SQLmap to perform SQL injection tests on a web application. Prompts the user for the target URL and additional options.
 - `msf`: Runs the Metasploit Framework to find and exploit security vulnerabilities. Prompts the user for the target and exploit options.
-
+- `hydra`: Runs Hydra to perform password cracking and brute-force authentication attacks. Prompts the user for target system details, username list, and password list options.
 ### Dependencies 📦
 - **Nmap:** Used for network scanning; KN8Tool prompts for installation if not found.
 - **John the Ripper:** Used for password cracking; KN8Tool prompts for installation and downloads the RockYou wordlist if needed.
