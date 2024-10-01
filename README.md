@@ -48,12 +48,15 @@ KN8Tool, yeni başlayanlar için tasarlanmış, kullanımı kolay bir Bash taban
 - `john`: Şifre kırma işlemi için bir şifre dosyası ve ek seçenekler aldıktan sonra John the Ripper'ı çalıştırır.
 - `sqlmap`: SQLmap çalıştırarak bir web uygulamasındaki SQL enjeksiyon testlerini gerçekleştirir. Kullanıcıya hedef URL ve diğer seçenekler için sorular sorar.
 - `msf`: Metasploit Framework'ü çalıştırarak güvenlik açıklarını bulma ve istismar etme işlemlerini gerçekleştirir. Kullanıcıya hedef ve istismar seçenekleri için sorular sorar.
+- **`hydra`**: Şifre kırma ve kimlik doğrulama saldırıları gerçekleştirir. Kullanıcıya hedef sistem bilgileri, kullanıcı adı ve parola listesi gibi seçenekler için sorular sorar.
+
 
 ## Bağımlılıklar 📦
 - **Nmap:** Ağ taramaları için kullanılır. Yüklenmediği takdirde kullanıcıya yükleme yapması için uyarı verilir.
 - **John the Ripper:** Şifre kırma işlemleri için kullanılır. Yüklenmediği takdirde kullanıcıya yükleme yapması için uyarı verilir ve RockYou wordlist dosyasını indirir.
 - **SQLmap:** SQL enjeksiyon testleri için kullanılır. Yüklenmediği takdirde kullanıcıya yükleme yapması için uyarı verilir.
 - **Metasploit Framework (msf):** Güvenlik açıkları bulma ve istismar etme işlemleri için kullanılır. Yüklenmediği takdirde kullanıcıya yükleme yapması için uyarı verilir.
+- **Hydra:** Şifre kırma ve kimlik doğrulama denemeleri yapmak için kullanılır. Yüklenmediği takdirde, kullanıcıya yükleme yapması için uyarı verilir ve uygun dictionary (sözlük) dosyalarının kullanılması sağlanır.
 
 ---
 
@@ -111,4 +114,5 @@ KN8Tool is an easy-to-use Bash-based cybersecurity tool designed for beginners. 
 - **John the Ripper:** Used for password cracking; KN8Tool prompts for installation and downloads the RockYou wordlist if needed.
 - **SQLmap:** Used for SQL injection tests. If not installed, the user is prompted to install it.
 - **Metasploit Framework (msf):** Used for finding and exploiting security vulnerabilities. If not installed, the user is prompted to install it.
+- **Hydra:** Used for password cracking and authentication attempts. If it is not installed, the user is prompted to install it, and appropriate dictionary files are used.
 ---
