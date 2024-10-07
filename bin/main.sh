@@ -1,5 +1,11 @@
 #! /bin/bash 
 
+#!  root kontrol
+if [ "$EUID" -ne 0 ]; then
+  echo -e " ${RED} Lütfen bu scripti root yetkileriyle çalıştırın.${NC} "
+  exit
+fi
+
 
 #? Source 
     
@@ -91,22 +97,28 @@ echo "Komut kaydı" >> "$HISTORY_FILE"
             version)
                 echo -e "${BLUE}$VERSION ${NC}: Versiyonundasınız";;
             update)
-                VERSION="0.0.0.2"  # Mevcut sürüm
+                VERSION=$(cat ../version.txt)  # Mevcut sürümü oku
                 LATEST_VERSION=$(curl -s https://raw.githubusercontent.com/BKN8T/KN8Tool/master/version.txt)  # Versiyon kontrolü yapan GitHub URL'si
+
                 if [[ "$LATEST_VERSION" != "$VERSION" ]]; then
                     echo -e "${YELLOW}Yeni bir sürüm mevcut: $LATEST_VERSION. Güncellemek ister misiniz? (e/h)${NC}"
                     read -n 1 cevap
                     echo # Yeni satıra geç
+
                     if [[ $cevap == "e" || $cevap == "E" ]]; then
                         echo "Güncelleniyor..."
-                        git pull origin main  # Güncelleme işlemi
+                        if git pull origin main; then
+                            echo -e "${GREEN}Güncelleme başarılı.${NC}"
+                        else
+                            echo -e "${RED}Güncelleme sırasında bir hata oluştu. Lütfen internet bağlantınızı kontrol edin veya manuel olarak güncelleyin.${NC}"
+                        fi
                     else
                         echo "Güncelleme iptal edildi."
                     fi
                 else
                     echo -e "${GREEN}Zaten en son sürümü kullanıyorsunuz!${NC}"
                 fi
-            ;;
+    ;;
 
             quit|q|exit) 
                 echo "Çıkılıyor..."; 
